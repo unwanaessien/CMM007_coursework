@@ -155,10 +155,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 </head>
 
-<body class="login-body">
+<body class="login-body container ">
     <main class=" form-control-sm form-group row">
 
-        <div class="login-form">
+        <div class="login-form container">
             <h1> login page</h1>
 
             <?php if (!empty($loginerror)) {

@@ -6,7 +6,18 @@
 require_once "db-conn.php";
 error_reporting(E_ALL);
 readfile('header.php');
-session_start();
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+} else {
+    session_destroy();
+    session_start();
+}
+
+
+//now we take our hammer and destroy the session haha!
+
+
 ?>
 
 
@@ -56,7 +67,7 @@ session_start();
         };
         // $id = $_POST["id"];
         $phone = $_POST["phone"];
-        $is_admin = 1;
+        $is_admin = 0;
 
         if ($ok) {
             // make sure to store password in hashes
@@ -102,7 +113,8 @@ session_start();
             background-repeat: no-repeat;
             background-size: cover;
         }
-/* 
+
+        /* 
         .signin-form {
             width: 350px;
             top: 50%;
@@ -151,13 +163,12 @@ session_start();
             border: 0;
 
         } */
-
     </style>
     <div class="signin-form">
         <h1>sign in</h1>
 
         <main class="form-control-sm form-group row">
-            <form class="form-body" class="form-horizontal"  action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
+            <form class="form-body" class="form-horizontal" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
 
                 <div class="form-group">
                     <label for="firstname">FirstName: </label>

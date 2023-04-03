@@ -2,6 +2,15 @@
 //https://stackoverflow.com/questions/6902128/getting-data-from-the-url-in-php
 $storyId = "";
 session_start();
+$role = $_SESSION['is_admin'];
+$username = $_SESSION['username'];
+$role = $_SESSION['is_admin'];
+
+//enable page security to use authentication
+if (!isset($_SESSION["loggedin"])) {
+    header("location: login.php");
+  }
+  
 include_once 'db.php';
 include_once 'db-conn.php';
 $newTitle = $newLocation = $newCategory = $newDesc = $newUser = $newDate = "";

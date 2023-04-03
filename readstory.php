@@ -51,7 +51,7 @@ foreach ($result as $row)  {
 
 </head>
 
-<body>
+<body class="container " >
     <div class="container ">
         <div class="col-md-12">
             <h2 class="text-center text-uppercase">Story Title:  <?php echo $row["title"] ?>
@@ -64,8 +64,8 @@ foreach ($result as $row)  {
                 <p><h4><?php echo $row["description"] ?></h4></p>
             </div>
 
-            <div class="col-md-6">
-                <img src=<?php echo $row["image"] ?> alt="Your Image" class="img-fluid">
+            <div class="col-md-6 container">
+                <img src="<?php echo $row['image'] ?>" alt="<?php echo $row['title'] .  " image" ?>"  class="img-fluid">
             </div>
             
         </div>

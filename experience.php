@@ -60,7 +60,7 @@ $Age = '';
         </form>
 
         <?php
-        echo "<h1>Our Other Stories 2</h1>";
+        echo "<h1>Our Other Stories</h1>";
         $db = new mysqli(MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DATABASE);
         if (isset($_POST['search_term'])) {
             $searchTerm =  $_POST['search_term'];
@@ -79,7 +79,7 @@ $Age = '';
             echo '<div class="col-md-4  ">';
             // echo '<div class="grid-item " >';
             echo '<img class="img-circle" width="250" height="250" src="' . $row["image"] . '">' .
-                '<h2>' . $row["title"] . '</h2>' . '<p>' . $row["description"] . '</p>' .
+                '<h2>' . $row["title"] . '</h2>' . '<p>' . $row["description"]  . '<p> Author: ' . $row["userid"] . '</p>' . '</p>' .
                 '<p><a style="color: white" class="btn btn-secondary" href="readstory.php?story_id=' . $row["story_id"] . '">View details &raquo;</a></p>' .
                 '</div>';
         }
