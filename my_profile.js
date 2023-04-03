@@ -61,6 +61,25 @@ function deleteEntry(storyId) {
     });
 }
 
+function viewEntry(storyId) {
+    $.ajax({
+        url: "readstory.php",
+        method: "POST",
+        data: { story_id: storyId },
+        success: function (response) {
+            // Handle the response from the server
+            // For example, you can remove the row from the table:
+            $('#experiencetable').find('tr[data-storyid="' + storyId + '"]').remove();
+            //refresh the page to update the content
+            location.reload();
+        },
+        error: function () {
+            alert("Failed to delete entry");
+        }
+    });
+}
+
+
 function editEntry(storyId) {
     $.ajax({
         url: "edit.php",
@@ -138,7 +157,10 @@ function populateTable(keyword) {
                 // var storyid = found["story_id"];                     //get a single found items from result array
                 var htmlCode = "<tr>";                        //compose HTML of a row
                 htmlCode += "<td>" + found["story_id"] + "</td>";   //compose cells
-                htmlCode += "<td>" + found["title"] + "</td>";
+                // htmlCode += "<td>" + found["title"] + "</td>";
+                htmlCode += "<td><a class='col-md-12' href='readstory.php?story_id=" + found["story_id"] + "'>" + found["title"] + "</a></td>";
+
+                
                 htmlCode += "<td>" + found["location"] + "</td>";
                 htmlCode += "<td>" + found["description"] + "</td>";
                 htmlCode += "<td>" + found["category"] + "</td>";

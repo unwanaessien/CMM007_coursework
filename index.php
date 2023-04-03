@@ -6,11 +6,12 @@
 session_start();
 include('header.php');
 ?>
+
 <head>
     <meta http-equiv="X-UA-Compatible" content="width=device;charset=UTF-8">
-    <title>ScotViews Homepage</title>
     <!-- Bootstrap core CSS -->
     <title>Scot views</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style type="text/css">
         .bd-placeholder-img {
             font-size: 1.125rem;
@@ -54,48 +55,69 @@ include('header.php');
             background-color: rgba(0, 0, 0, 0.5);
             /* set the transparency level here */
         }
+
         /* #body{
             background-color:#45474d
         } */
     </style>
 
+    <script>
+        var video = document.getElementById("my-video");
+        var carousel = document.querySelector(".carousel-inner");
+
+        video.addEventListener("ended", function() {
+            // Move to the next slide
+            var activeItem = carousel.querySelector(".active");
+            var nextItem = activeItem.nextElementSibling || carousel.firstElementChild;
+            activeItem.classList.remove("active");
+            nextItem.classList.add("active");
+        });
+    </script>
 </head>
 
 <body class="container-fluid container" id="body">
     <div class="">
-        <div id="myCarousel" class="carousel slide" class="span8" data-ride="carousel">
-            <div id="carouselExampleCaptions" class="carousel slide" data-mdb-ride="carousel">
+        <div id="myCarousel" class="carousel slide  carousel slide span8" data-ride="carousel">
+            <div id="carouselExampleCaptions" data-mdb-ride="carousel">
 
                 <!-- Indicators -->
                 <ol class="carousel-indicators">
                     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                     <li data-target="#myCarousel" data-slide-to="1"></li>
                     <li data-target="#myCarousel" data-slide-to="2"></li>
+                    <li data-target="#myCarousel" data-slide-to="3"></li>
                 </ol>
 
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner">
-
+                    <!-- https://css-tricks.com/full-page-background-video-styles/ -->
                     <div class="item active">
+                        <video width="100%" height="50%" autoplay loop muted id="my-video">
+                            <source src="./assets/videos/scotviews.mp4" type="video/mp4">
+                            Scot Views
+                        </video>
+                    </div>
+
+                    <div class="item ">
                         <img src="assets/images/la.jpg" alt="Los Angeles" style="width:100%;">
                         <div class="carousel-caption">
-                            <h3>Los Angeles</h3>
-                            <p>LA is always so much fun!</p>
+                            <h3>Edinbrugh</h3>
+                            <p>Edinbrugh is always so much fun!</p>
                         </div>
                     </div>
 
                     <div class="item">
                         <img src="assets/images/chicago.jpg" alt="Chicago" style="width:100%;">
                         <div class="carousel-caption">
-                            <h3>Chicago</h3>
-                            <p>Thank you, Chicago!</p>
+                            <h3>Glasgow</h3>
+                            <p>Nighlife in Glasgow!</p>
                         </div>
                     </div>
 
                     <div class="item">
                         <img src="assets/images/ny.jpg" alt="New York" style="width:100%;">
                         <div class="carousel-caption">
-                            <h3>New York</h3>
+                            <h3>Falkirk</h3>
                             <p>We love the Big Apple!</p>
                         </div>
                     </div>
@@ -156,14 +178,10 @@ include('header.php');
             <!-- /END THE FEATURETTES -->
 
     </div><!-- /.container -->
-    </div>
+
 
 
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
-
-    </div>
-    </div>
-    </div>
 
 </body>
 

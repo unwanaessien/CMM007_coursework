@@ -16,7 +16,6 @@ include 'db.php';
 readfile('header.php');
 ?>
 
-
 <head>
     <title>Admin Dashboard</title>
     <meta charset="UTF-8">

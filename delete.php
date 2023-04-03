@@ -1,5 +1,11 @@
 <?php
 $storyId = $_POST['story_id'];
+$username = $_SESSION['username'];
+
+//enable page security to use authentication
+if (!isset($_SESSION["loggedin"])) {
+  header("location: login.php");
+}
 
 
 include_once 'db.php';
@@ -12,7 +18,7 @@ if (!$db) {
   }
 
 // Construct the SQL query to delete the entry with the given story_id
-$sql = "DELETE FROM experiences where story_id = $storyId";
+$sql = "DELETE FROM experiences where story_id = $storyId and userid = '$username'";
 
 // Execute the query
 if (mysqli_query($db, $sql)) {

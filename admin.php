@@ -27,11 +27,21 @@ include 'db.php';
 // include_once 'class/Category.php';
 
 $db = new mysqli(MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DATABASE);
-$totalpost = "SELECT COUNT(story_id) FROM experiences";
-$totalusers = "SELECT COUNT(id) FROM users";
+$totalpost = "SELECT Count(title) from experiences";
+$totalusers = 'SELECT Count(id) from users where is_admin = "0" ';
 $sql = "SELECT * FROM experiences ORDER BY story_id DESC ";
+
+$totalpost = "SELECT COUNT(title) FROM experiences";
 $totalpostcount = mysqli_query($db, $totalpost);
+$count = mysqli_fetch_array($totalpostcount)[0];
+// echo $count;
+
+// echo $postcount;
 $totaluserscount = mysqli_query($db, $totalusers);
+$usercount = mysqli_fetch_array($totaluserscount)[0];
+// echo $usercount;
+
+
 $result =  mysqli_query($db, $sql);
 // $db = $database->getConnection();
 
@@ -60,6 +70,10 @@ $result =  mysqli_query($db, $sql);
     <div class="row">
       <div class="col-md-10">
         <h1><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Admin Dashboard </h1>
+      </div>
+
+      <div class="col-md-10">
+        <h1><span class="" aria-hidden="true"></span>Total Stories: <?php echo $count; ?>, Total Users: <?php echo $usercount; ?> </h1>
       </div>
 
       <br>
