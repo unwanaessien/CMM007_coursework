@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html>
-
 <?php
 require 'db-conn.php';
 readfile('header.php');
@@ -8,6 +5,8 @@ $_SESSION['url'] = $_SERVER['REQUEST_URI'];
 
 ?>
 <br>
+<!DOCTYPE html>
+<html>
 
 <head>
     <title>Content Management Website</title>

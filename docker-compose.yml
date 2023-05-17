@@ -1,0 +1,59 @@
+version: '3'
+
+services:
+  web:
+    container_name: CMM007
+    # Path to dockerfile.
+    # '.' represents the current directory in which
+    # docker-compose.yml is present.
+    build: . 
+
+    # Mapping of container port to host
+    # Port 80 must have likely been in use so we map 8081 to 
+    # port 80 on the container    
+    ports:
+      - "8082:80"
+
+    # Mount volume 
+    volumes:
+      - "./:/var/www/html/"
+
+    # Link database container to app container 
+    # for reachability.
+    links:
+      - "db:backenddb"
+
+  db:
+    # image to fetch from docker hub
+    image: mysql:5.6
+    restart: unless-stopped
+    container_name: db
+    # Environment variables for startup script
+    # container will use these variables
+    # to start the container with these define variables. 
+    environment:
+      - "MYSQL_ROOT_PASSWORD=sequence5"
+      - "MYSQL_USER=cm007"
+      - "MYSQL_PASSWORD=cm007"
+      - "MYSQL_DATABASE=cm007"
+      - "MYSQL_ALLOW_EMPTY_PASSWORD=yes"
+
+    # Mount init.sql file to automatically run 
+    # and create tables for us.
+    # everything in docker-entrypoint-initdb.d folder
+    # is executed as soon as container is up nd running.
+    volumes:
+      - "./assets/SQL/update_db.sql:/docker-entrypoint-initdb.d/update_db.sql"
+      # - "./data/mysql:/var/lib/mysql"
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8083:8080
+
+
+# networks:
+#   dev:
+#     # actually this is the default
+#     driver: bridge

@@ -1,14 +1,11 @@
-<!DOCTYPE html>
-<html lang='en'>
 <?php
-
 if (session_status() === PHP_SESSION_NONE) {
   session_start();
 }
-
 ?>
 
-<html>
+<!DOCTYPE html>
+<html lang='en'>
 
 <head>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">

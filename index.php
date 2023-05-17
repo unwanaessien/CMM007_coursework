@@ -1,11 +1,13 @@
-<!DOCTYPE html>
-<html lang='en'>
-
 <?php
 //used to track logged in user
 session_start();
 include('header.php');
 ?>
+
+<!DOCTYPE html>
+<html lang='en'>
+
+
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="width=device;charset=UTF-8">
